@@ -1,12 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const LandingPage = ({ scopedT: t, shopifyFetch }) => {
+  const [name, setName] = useState<string>("");
+
   useEffect(() => {
-    console.info("fetch shopify data on load");
-    shopifyFetch();
+    const query = `
+      query {
+        shop {
+          name
+        }
+      }
+    `;
+
+    shopifyFetch({ query }).then(res => setName(res.data.shop.name));
   }, []);
 
-  return <div>{t("INTRO")}</div>;
+  return <div>{t("INTRO", { name })}</div>;
 };
 
 export default LandingPage;
