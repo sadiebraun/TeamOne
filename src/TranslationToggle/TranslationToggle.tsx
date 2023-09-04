@@ -4,8 +4,8 @@ const TranslationToggle = ({ t }) => (
   <button
     style={{
       position: "absolute",
-      top: "5em",
-      right: "2em",
+      top: "1em",
+      right: "0em",
       width: 150
     }}
     onClick={() => t.setLanguage(t.getLanguage() === "jp" ? "en" : "jp")}
